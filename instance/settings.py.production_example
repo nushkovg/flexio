@@ -1,0 +1,5 @@
+# For production.
+DEBUG = False
+
+SERVER_NAME = 'flexio.com'
+SECRET_KEY = 'sn6JTvN^fjNbH!{1)u7=#hF|?W<uBD'

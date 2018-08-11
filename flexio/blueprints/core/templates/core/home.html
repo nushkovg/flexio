@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Flexio{% endblock %}
+
+{% block meta_description %}Welcome to the future of internal company communication.{% endblock %}
+
+{% block main %}
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="4000" data-wrap="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="flex-center">
+                    <div class="flexio-home">
+                        <img id="flexio-home-logo" src="{{ url_for('static', filename='images/flexio-home.png') }}" alt="Flexio Logo">
+                        <p class="noselect">Smart. Simple. Flexible.</p>
+                    </div>
+                    <div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="jumbotron">
+                    <h1 class="display-4">Welcome to Flexio!</h1>
+                    <p class="lead">Are you feeling like something is missing in your company's internal communication? 
+                                    Is someone always late on important meetings because of not reading mails? Flexio
+                                    can fix that, and much more. </p>
+                    <hr class="my-4">
+                    <p>Flexio is a company communication system, based on the idea that the email system is not the best 
+                       solution for communication in companies.</p>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('core.about') }}" role="button">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block main %}
+    <div class="flexio-home">
+        <img id="flexio-home-logo" src="{{ url_for('static', filename='images/flexio-home.png') }}" alt="Flexio Logo">
+        <p class="noselect">Smart. Simple. Flexible.</p>
+    </div>
+    <div>
+    <p>
+        Flexio is the open source solution to internal communication in companies.
+    </p>
+    <p>
+        Starting with the idea that the email communication is becoming broken as we live in an age where technology is getting
+        stronger every day, Flexio is created to remove every problem that leads to missed meetings, misunderstandings and bad
+        communication in general. Flexio's features for creating notifications, posts, updating each user's info and much more
+        is making it the best solution to every day problems at work. And best of all, it's totally free! However, if you'd like
+        to support the sole developer who made Flexio, you are free to do so. The 
+        <a class="links-text" href="#">Donate</a> option is always here.
+    </p>
+    <p>
+        Everyone can stay informed, productive, and motivated. The solution is here, because Flexio keeps it smart, simple, and flexible.
+    </p>
+    </div>
+{% endblock %}

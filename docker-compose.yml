@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  website:
+    build: .
+    command: >
+      gunicorn -b 0.0.0.0:5000
+        --access-logfile -
+        --reload
+        "flexio.app:create_app()"
+    environment:
+      PYTHONUNBUFFERED: 'true'
+    volumes:
+      - '.:/flexio'
+    ports:
+      - '5000:5000'
