@@ -12,7 +12,8 @@ def app():
     """
     params = {
         'DEBUG': False,
-        'TESTING': True
+        'TESTING': True,
+        'WTF_CSRF_ENABLED': False
     }
 
     _app = create_app(settings_override=params)

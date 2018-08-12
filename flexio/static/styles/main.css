@@ -29,6 +29,24 @@ footer {
                                   supported by Chrome and Opera */
 }
 
+.aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aligner-item {
+  max-width: 80%;
+}
+
+.aligner-item--top {
+  align-self: flex-start;
+}
+
+.aligner-item--bottom {
+  align-self: flex-end;
+}
+
 /* Navbar styles */
 
 .navbar {

@@ -2,9 +2,9 @@
 {%- macro render() -%}
   {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages %}
-      <div id="flash-messages" class="row sm-margin-top">
+      <div id="flash-messages" class="row sm-margin-top aligner">
         {% for category, msg in messages %}
-          <div class="alert alert-{{ category }}" role="alert">
+          <div class="alert alert-{{ category }} aligner-item-top" role="alert">
             {{ msg }}
           </div>
         {% endfor %}
