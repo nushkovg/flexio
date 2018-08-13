@@ -1,0 +1,37 @@
+{% extends 'layouts/app.html' %}
+
+{% block title %}Flexio Settings{% endblock %}
+
+{% block main %}
+  <div class="row aligner">
+    <div class="col-md-5 aligner-item">
+      <h2 class="centered-text md-margin-bottom">Settings</h2>
+      {% if current_user.username != None %}
+          <h4 class="sm-margin-bottom primary-color">{{ current_user.username }}</h4>
+      {% else %}
+          <h4 class="sm-margin-bottom primary-color">{{ current_user.email }}</h4>
+      {% endif %}
+
+      <div class="list-group">
+        <a href="#"
+           class="list-group-item">
+          Change Profile Picture
+        </a>
+        <a href="{{ url_for('user.update_credentials') }}"
+           class="list-group-item">
+          Update email and password
+        </a>
+        {% if current_user.username %}
+          <span class="list-group-item quarter-faded text-muted">
+            Your username is
+            <strong>{{ current_user.username }}</strong>
+          </span>
+        {% else %}
+          <a href="{{ url_for('user.welcome') }}"
+             class="list-group-item">
+            Pick a username
+          </a>
+        {% endif %}
+      </div>
+    </div>
+{% endblock %}

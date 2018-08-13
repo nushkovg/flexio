@@ -2,10 +2,16 @@
 DEBUG = False
 
 SERVER_NAME = 'flexio.com'
-SECRET_KEY = 'sn6JTvN^fjNbH!{1)u7=#hF|?W<uBD'
+SECRET_KEY = 'averyveryverysecuresecretkey'
 
 MAIL_USERNAME = 'me@realemailaccount.com'
 MAIL_PASSWORD = 'thebestpasswordievermade'
 
 CELERY_BROKER_URL = 'redis://:amuchmoresecurepassword@redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://:amuchmoresecurepassword@redis:6379/0'
+
+db_uri = 'postgresql://flexio:themostsecurepasswordevercreated@postgres:5432/flexio'
+SQLALCHEMY_DATABASE_URI = db_uri
+
+SEED_ADMIN_EMAIL = 'you@realemailaccount.com'
+SEED_ADMIN_PASSWORD = 'themostsecurepasswordevercreated'

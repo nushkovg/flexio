@@ -5,6 +5,8 @@ Flask==1.0.2
 gunicorn==19.9.0
 
 # Data and workers
+psycopg2-binary==2.7.5
+Flask-SQLAlchemy==2.1
 celery==4.2.1
 redis==2.10.6
 
@@ -16,6 +18,7 @@ flake8==3.5.0
 # Extensions
 flask_debugtoolbar==0.10.1
 Flask-Mail==0.9.1
+Flask-Login==0.3.2
 
 # CLI Scripting
 Click==6.7

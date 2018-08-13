@@ -18,29 +18,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body class="container">
-    
-    <nav class="navbar navbar-light fixed-top navbar-expand-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('core.home') }}">
-                <img id="flexio-nav-logo" src="{{ url_for('static', filename='images/flexio.png') }}" alt=""> Flexio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link scroll-link" href="#">
-                            <i class="fa fa-user-circle"></i> Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link scroll-link" href="#">
-                            <i class="fa fa-user-plus"></i> Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% block header %}{% endblock %}
 
     <main class="sm-margin-top">
         {{ flash.render() }}
@@ -50,34 +28,7 @@
     </main>
     
     <footer class="footer-distributed">
-        <div class="footer-right">
-            <a href="https://www.facebook.com" target="_blank">
-                <i class="fa fa-facebook"></i>
-            </a>
-            <a href="https://www.linkedin.com" target="_blank">
-                <i class="fa fa-linkedin"></i>
-            </a>
-            <a href="https://www.github.com" target="_blank">
-                <i class="fa fa-github"></i>
-            </a>
-        </div>
-
-        <div class="footer-left">
-            <p class="footer-links">
-                <a href="{{ url_for('core.home') }}">Home</a>
-                ·
-                <a href="#">Donate</a>
-                ·
-                <a href="{{ url_for('core.about') }}">About</a>
-                ·
-                <a href="{{ url_for('contact.index') }}">Contact</a>
-                ·
-                <a href="{{ url_for('core.privacy') }}">Privacy Policy</a>
-                ·
-                <a href="{{ url_for('core.terms') }}">Terms of Service</a>
-            </p>
-            <p class="text-muted noselect">Flexio &copy; 2018</p>
-        </div>
+        {% block footer %}{% endblock %}
     </footer>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

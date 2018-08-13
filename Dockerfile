@@ -1,6 +1,8 @@
-FROM python:2.7-slim
+FROM python:2.7-alpine
 LABEL maintainer="Goran Nushkov" \
       maintainer_email="gnuskov@protonmail.com"
+
+RUN apk update && apk add build-base postgresql-dev
 
 ENV INSTALL_PATH /flexio
 RUN mkdir -p $INSTALL_PATH
