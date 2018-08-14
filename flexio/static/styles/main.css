@@ -270,7 +270,7 @@ i {
 }
 
 .primary-color {
-    color: #af8b3c;
+    color: #af8b3c !important;
 }
 
 /* Margin and padding
