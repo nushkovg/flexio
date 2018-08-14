@@ -34,9 +34,12 @@ def login():
         u = User.find_by_identity(request.form.get('identity'))
 
         if u and u.authenticated(password=request.form.get('password')):
-            # If you want users to be able to select whether or not they
-            # should remain logged in then perform the following 3 steps:
+            # As you can see remember me is always enabled, this was a design
+            # decision I made because more often than not users want this
+            # enabled. This allows for a less complicated login form.
             #
+            # If however you want them to be able to select whether or not they
+            # should remain logged in then perform the following 3 steps:
             # 1) Replace 'True' below with: request.form.get('remember', False)
             # 2) Uncomment the 'remember' field in user/forms.py#LoginForm
             # 3) Add a checkbox to the login form with the id/name 'remember'

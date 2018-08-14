@@ -27,3 +27,6 @@ Click==6.7
 Flask-WTF==0.9.5
 WTForms-Components==0.10.3
 WTForms-Alchemy==0.16.7
+
+# Utilities
+fake-factory==0.5.7

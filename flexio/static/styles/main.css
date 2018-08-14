@@ -36,7 +36,7 @@ footer {
 }
 
 .aligner-item {
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .aligner-item--top {
@@ -249,7 +249,7 @@ i {
     vertical-align: inherit;
 }
 
-.fa-fire {
+.fa-fire, .fa-shield {
     color: #af8b3c;
 }
 
@@ -295,6 +295,44 @@ i {
 .sm-margin-top {
     margin-top: 20px;
 }
+
+/* Admin dashboard
+-------------------------------------------------- */
+
+#bulk_actions {
+    display: none;
+    padding-bottom: 8px;
+}
+
+#scope {
+    margin-bottom: 0;
+    width: 160px;
+    height: 29px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.sort:after {
+    content: '\f0dc';
+    font-family: FontAwesome;
+    margin-left: 6px;
+    color: #BBB;
+}
+
+.asc:after {
+    content: '\f0dd';
+    font-family: FontAwesome;
+    margin-left: 6px;
+    color: #444;
+}
+
+.desc:after {
+    content: '\f0de';
+    font-family: FontAwesome;
+    margin-left: 6px;
+    color: #444;
+}
+
 
 /* Bootstrap overrides */
 
@@ -388,4 +426,16 @@ input[type="color"]:focus,
 
 .dropdown-menu {
     border-color: transparent;
+}
+
+.progress-bar {
+    background-color: #af8b3c;
+}
+
+.col-header a {
+    color: #af8b3c;
+}
+
+.media-heading {
+    color: rgb(41, 43, 56);
 }

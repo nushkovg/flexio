@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from wtforms import HiddenField, StringField, PasswordField, BooleanField
+from wtforms import HiddenField, StringField, PasswordField  # BooleanField
 from wtforms.validators import DataRequired, Length, Optional, Regexp, Email
 from wtforms_alchemy import Unique
 

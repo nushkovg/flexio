@@ -2,6 +2,7 @@ from flask import Flask
 from celery import Celery
 from itsdangerous import URLSafeTimedSerializer
 
+from flexio.blueprints.admin import admin
 from flexio.blueprints.core import core
 from flexio.blueprints.contact import contact
 from flexio.blueprints.error_handlers import error_handlers
@@ -61,6 +62,7 @@ def create_app(settings_override=None):
     if settings_override:
         app.config.update(settings_override)
 
+    app.register_blueprint(admin)
     app.register_blueprint(core)
     app.register_blueprint(error_handlers)
     app.register_blueprint(contact)
