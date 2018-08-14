@@ -53,9 +53,9 @@ def login():
 
                 return redirect(url_for('user.settings'))
             else:
-                flash('This account has been disabled.', 'error')
+                flash('This account has been disabled.', 'warning')
         else:
-            flash('Identity or password is incorrect.', 'error')
+            flash('Identity or password is incorrect.', 'warning')
 
     return render_template('user/login.html', form=form)
 
@@ -92,7 +92,7 @@ def password_reset():
 
         if u is None:
             flash('Your reset token has expired or was tampered with.',
-                  'error')
+                  'warning')
             return redirect(url_for('user.begin_password_reset'))
 
         form.populate_obj(u)

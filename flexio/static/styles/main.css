@@ -439,3 +439,7 @@ input[type="color"]:focus,
 .media-heading {
     color: rgb(41, 43, 56);
 }
+
+th:nth-child(3) a {
+    padding-left: 1.5vmin;
+}

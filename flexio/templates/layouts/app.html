@@ -24,6 +24,12 @@
                         {% endif %}
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu nav-item">
+                        {% if current_user.role == 'admin' %}
+                        <li>
+                            <a class="nav-link scroll-link" href="{{ url_for('admin.users') }}">
+                            <i class="fa fa-shield"></i> Admin Dashboard</a></li>
+                        <li>
+                        {% endif %}
                         {% if current_user.username != None %}
                         <li>
                             <a class="nav-link scroll-link" href="#">

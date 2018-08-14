@@ -68,7 +68,7 @@ def users_edit(id):
         if User.is_last_admin(user,
                               request.form.get('role'),
                               request.form.get('active')):
-            flash('You are the last admin, you cannot do that.', 'error')
+            flash('You are the last admin, you cannot do that.', 'warning')
             return redirect(url_for('admin.users'))
 
         form.populate_obj(user)
@@ -99,6 +99,6 @@ def users_bulk_delete():
         flash('{0} user(s) were scheduled to be deleted.'.format(delete_count),
               'success')
     else:
-        flash('No users were deleted, something went wrong.', 'error')
+        flash('No users were deleted, something went wrong.', 'warning')
 
     return redirect(url_for('admin.users'))
