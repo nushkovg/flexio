@@ -17,10 +17,19 @@
                         data-toggle="dropdown"
                         role="button" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-user-circle-o"></i> Account
+                        {% if current_user.username != None %}
+                            <i class="fa fa-user-circle-o"></i> {{ current_user.username }}
+                        {% else %}
+                            <i class="fa fa-user-circle-o"></i> Account
+                        {% endif %}
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu nav-item">
+                        {% if current_user.username != None %}
                         <li>
+                            <a class="nav-link scroll-link" href="#">
+                            <i class="fa fa-wpforms"></i> {{ current_user.username }}</a></li>
+                        <li>
+                        {% endif %}
                             <a class="nav-link scroll-link" href="{{ url_for('user.settings') }}">
                                 <i class="fa fa-cog"></i> Settings</a></li>
                         <li role="separator" class="divider"></li>
