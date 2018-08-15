@@ -34,41 +34,53 @@
 {% macro paginate(resource) -%}
   {% set args = request.args.to_dict() %}
 
-  <ul class="pagination">
-    <li class="{{ 'disabled' if resource.page == 1 }}">
+  <ul class="pagination aligner">
+    <li class="{{ 'disabled' if resource.page == 1 }} primary-color">
       <a href="{{ url_for(request.endpoint, page=1, **args) }}"
-          aria-label="First">
+          aria-label="First"
+          class="primary-color">
         &laquo; First
       </a>
     </li>
-    <li class="{{ 'disabled' if not resource.has_prev }}">
+    &emsp;
+    <li class="{{ 'disabled' if not resource.has_prev }} primary-color">
       <a href="{{ url_for(request.endpoint, page=resource.page - 1, **args) }}"
-          aria-label="Previous">
+          aria-label="Previous"
+          class="primary-color">
         Prev
       </a>
     </li>
+    &emsp;
   {%- for page in resource.iter_pages() %}
     <li class="{{ 'active' if page and page == resource.page }}">
       {% if page %}
         {% if page != resource.page %}
-          <a href="{{ url_for(request.endpoint, page=page, **args) }}">{{ page }}</a>
+          &nbsp;  
+          <a href="{{ url_for(request.endpoint, page=page, **args) }}" class="secondary-color">{{ page }}</a>
+          &nbsp;
         {% else %}
+          &nbsp;
           <span class="text-muted">{{ page }}</span>
+          &nbsp;
         {% endif %}
       {% else %}
         <span class="ellipsis">…</span>
       {% endif %}
     </li>
   {%- endfor %}
+    &emsp;
     <li class="{{ 'disabled' if not resource.has_next }}">
       <a href="{{ url_for(request.endpoint, page=resource.page + 1, **args) }}"
-          aria-label="Next">
+          aria-label="Next"
+          class="primary-color">
         Next
       </a>
     </li>
+    &emsp;
     <li class="{{ 'disabled' if resource.page == resource.pages }}">
       <a href="{{ url_for(request.endpoint, page=resource.pages, **args) }}"
-          aria-label="Last">
+          aria-label="Last"
+          class="primary-color">
         Last &raquo;
       </a>
     </li>

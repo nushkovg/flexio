@@ -4,12 +4,14 @@ from flask import (
     request,
     flash,
     url_for,
-    render_template)
+    render_template
+)
 from flask_login import (
     login_required,
     login_user,
     current_user,
-    logout_user)
+    logout_user
+)
 
 from lib.safe_next_url import safe_next_url
 from flexio.blueprints.user.decorators import anonymous_required
@@ -20,7 +22,9 @@ from flexio.blueprints.user.forms import (
     PasswordResetForm,
     SignupForm,
     WelcomeForm,
-    UpdateCredentials)
+    UpdateCredentials,
+    DeleteUserForm
+)
 
 user = Blueprint('user', __name__, template_folder='templates')
 
@@ -147,7 +151,8 @@ def welcome():
 @user.route('/settings')
 @login_required
 def settings():
-    return render_template('user/settings.html')
+    form = DeleteUserForm()
+    return render_template('user/settings.html', form=form)
 
 
 @user.route('/settings/update_credentials', methods=['GET', 'POST'])
@@ -168,3 +173,17 @@ def update_credentials():
         return redirect(url_for('user.settings'))
 
     return render_template('user/update_credentials.html', form=form)
+
+
+@user.route('/settings/delete', methods=['POST'])
+@login_required
+def delete():
+    form = DeleteUserForm()
+
+    if form.validate_on_submit():
+        current_user.delete()
+
+        flash('Your account has been successfully deleted.', 'success')
+        return redirect(url_for('user.login'))
+
+    return render_template('user/login.html', form=form)

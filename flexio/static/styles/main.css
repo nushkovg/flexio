@@ -273,6 +273,10 @@ i {
     color: #af8b3c !important;
 }
 
+.secondary-color {
+    color: rgba(0, 0, 0, 0.8);
+}
+
 /* Margin and padding
 -------------------------------------------------- */
 

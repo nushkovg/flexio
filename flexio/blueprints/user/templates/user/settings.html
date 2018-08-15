@@ -1,4 +1,5 @@
 {% extends 'layouts/app.html' %}
+{% import 'macros/form.html' as f with context %}
 
 {% block title %}Flexio Settings{% endblock %}
 
@@ -46,7 +47,9 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            {% call f.form_tag('user.delete') %}
+              <button type="submit" class="btn btn-danger">Delete</button>
+            {% endcall %}
           </div>
         </div>
       </div>

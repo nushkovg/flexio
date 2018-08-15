@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from wtforms import HiddenField, StringField, PasswordField  # BooleanField
+from wtforms import HiddenField, StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Optional, Regexp, Email
 from wtforms_alchemy import Unique
 
@@ -69,3 +69,7 @@ class UpdateCredentials(ModelForm):
         )
     ])
     password = PasswordField('Password', [Optional(), Length(8, 128)])
+
+
+class DeleteUserForm(Form):
+    delete = SubmitField('Delete')
