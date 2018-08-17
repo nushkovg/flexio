@@ -1,7 +1,15 @@
 {% macro role_icon_for(user) -%}
   {% if user.role == 'admin' %}
     <i class="fa fa-3x fa-fw fa-shield" title="Admin"></i>
-  {% else %}
+  {% endif %}
+  {% if user.role == 'admin' and user.deleted == True %}
+    <i class="fa fa-3x fa-fw fa-times" title="Deleted Admin"></i>
+  {% endif %}
+
+  {% if user.role == 'member' %}
     <i class="fa fa-3x fa-fw fa-user text-muted" title="Member"></i>
+  {% endif %}
+  {% if user.role == 'member' and user.deleted == True %}
+    <i class="fa fa-3x fa-fw fa-times" title="Deleted Member"></i>
   {% endif %}
 {% endmacro %}

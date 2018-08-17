@@ -135,7 +135,7 @@ class User(UserMixin, ResourceMixin, db.Model):
         return or_(*search_chain)
 
     @classmethod
-    def is_last_admin(cls, user, new_role, new_active):
+    def is_last_admin(cls, user, new_role, new_active, new_deleted):
         """
         Determine whether or not this user is the last admin account.
 
@@ -149,12 +149,14 @@ class User(UserMixin, ResourceMixin, db.Model):
         """
         is_changing_roles = user.role == 'admin' and new_role != 'admin'
         is_changing_active = user.active is True and new_active is None
+        is_changing_deleted = user.deleted is True and new_deleted is None
 
-        if is_changing_roles or is_changing_active:
+        if is_changing_roles or is_changing_active or is_changing_deleted:
             admin_count = User.query.filter(User.role == 'admin').count()
             active_count = User.query.filter(User.is_active is True).count()
+            deleted_count = User.query.filter(User.deleted is True).count()
 
-            if admin_count == 1 or active_count == 1:
+            if admin_count == 1 or (active_count == 1 and deleted_count == 0):
                 return True
 
         return False
