@@ -296,16 +296,17 @@ class TestUpdateCredentials(ViewTestMixin):
 
 
 class TestUserDeletion(ViewTestMixin):
-    def test_user_delete(self, client):
+    def test_user_delete(self):
         """ User deletes account successfully, gets redirected to login. """
-        self.login('new@local.host', 'password')
+        self.login('foof@bar.com', 'password')
         response = self.client.post(url_for('user.delete'),
                                     follow_redirects=True)
         assert_status_with_message(200, response,
                                    'Sign in to continue')
 
-        self.login('new@local.host', 'password')
+        self.login('foof@bar.com', 'password')
         assert_status_with_message(200, response,
                                    'Sign in to continue')
 
-        assert User.find_by_identity('new@local.host') is None
+        assert User.find_by_identity('foof@bar.com').active is False
+        assert User.find_by_identity('foof@bar.com').deleted is True

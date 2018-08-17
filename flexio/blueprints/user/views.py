@@ -33,21 +33,26 @@ user = Blueprint('user', __name__, template_folder='templates')
 @anonymous_required()
 def login():
     form = LoginForm(next=request.args.get('next'))
-
+    
     if form.validate_on_submit():
         u = User.find_by_identity(request.form.get('identity'))
 
         if u and u.authenticated(password=request.form.get('password')):
-            # As you can see remember me is always enabled, this was a design
-            # decision I made because more often than not users want this
-            # enabled. This allows for a less complicated login form.
+            # As you can see remember me is always enabled, this was a
+            # design decision I made because more often than not users 
+            # want this enabled. 
+            # This allows for a less complicated login form.
             #
-            # If however you want them to be able to select whether or not they
+            # If you want them to be able to select whether or not they
             # should remain logged in then perform the following 3 steps:
-            # 1) Replace 'True' below with: request.form.get('remember', False)
+            # 1) Replace 'True' below with: 
+            #    request.form.get('remember', False)
             # 2) Uncomment the 'remember' field in user/forms.py#LoginForm
-            # 3) Add a checkbox to the login form with the id/name 'remember'
-            if login_user(u, remember=True) and u.is_active():
+            # 3) Add checkbox to the login form with id/name 'remember'
+            if u.deleted == True and u.active == False:
+                flash('This account has been deleted.', 'warning')
+
+            elif login_user(u, remember=True) and u.is_active():
                 u.update_activity_tracking(request.remote_addr)
 
                 # Handle optionally redirecting to the next URL safely.
@@ -181,9 +186,15 @@ def delete():
     form = DeleteUserForm()
 
     if form.validate_on_submit():
-        current_user.delete()
+        if current_user.role == 'admin':
+            flash('You cannot delete an admin account.', 'warning')
+            return redirect(url_for('user.settings'))
 
-        flash('Your account has been successfully deleted.', 'success')
-        return redirect(url_for('user.login'))
+        else:
+            current_user.soft_delete()
+            logout_user()
+
+            flash('Your account has been successfully deleted.', 'success')
+            return redirect(url_for('user.login'))
 
     return render_template('user/login.html', form=form)

@@ -121,6 +121,11 @@ def users(db):
             'active': False,
             'email': 'disabled@local.host',
             'password': 'password'
+        },
+        {
+            'role': 'member',
+            'email':'foof@bar.com',
+            'password':'password'
         }
     ]
 

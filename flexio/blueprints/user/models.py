@@ -34,6 +34,7 @@ class User(UserMixin, ResourceMixin, db.Model):
     email = db.Column(db.String(255), unique=True, index=True, nullable=False,
                       server_default='')
     password = db.Column(db.String(128), nullable=False, server_default='')
+    deleted = db.Column(db.Boolean(), nullable=False, server_default='0')
 
     # Activity tracking.
     sign_in_count = db.Column(db.Integer, nullable=False, default=0)

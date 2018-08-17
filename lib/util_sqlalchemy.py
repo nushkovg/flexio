@@ -6,6 +6,8 @@ from sqlalchemy.types import TypeDecorator
 from lib.util_datetime import tzware_datetime
 from flexio.extensions import db
 
+from flask_login import current_user
+
 
 class AwareDateTime(TypeDecorator):
     """
@@ -118,6 +120,17 @@ class ResourceMixin(object):
         """
         db.session.delete(self)
         return db.session.commit()
+
+    def soft_delete(self):
+        """
+        Soft delete current user's model instance.
+
+        :return: db.session.commit()'s result
+        """
+        current_user.deleted = True
+        current_user.active = False
+        return db.session.commit()
+
 
     def __str__(self):
         """
