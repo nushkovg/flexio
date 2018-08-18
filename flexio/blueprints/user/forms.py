@@ -50,7 +50,7 @@ class WelcomeForm(ModelForm):
             get_session=lambda: db.session
         ),
         DataRequired(),
-        Length(1, 16),
+        Length(1, 32),
         Regexp('^\w+$', message=username_message)
     ])
 

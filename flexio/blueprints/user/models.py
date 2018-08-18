@@ -42,6 +42,8 @@ class User(UserMixin, ResourceMixin, db.Model):
     current_sign_in_ip = db.Column(db.String(45))
     last_sign_in_on = db.Column(AwareDateTime())
     last_sign_in_ip = db.Column(db.String(45))
+    deleted_on = db.Column(AwareDateTime())
+    deleted_from_ip = db.Column(db.String(45))
 
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
@@ -230,6 +232,9 @@ class User(UserMixin, ResourceMixin, db.Model):
 
         self.last_sign_in_on = self.current_sign_in_on
         self.last_sign_in_ip = self.current_sign_in_ip
+
+        self.deleted_on = self.current_sign_in_on
+        self.deleted_from_ip = self.current_sign_in_ip
 
         self.current_sign_in_on = datetime.datetime.now(pytz.utc)
         self.current_sign_in_ip = ip_address

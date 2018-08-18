@@ -33,23 +33,23 @@ user = Blueprint('user', __name__, template_folder='templates')
 @anonymous_required()
 def login():
     form = LoginForm(next=request.args.get('next'))
-    
+
     if form.validate_on_submit():
         u = User.find_by_identity(request.form.get('identity'))
 
         if u and u.authenticated(password=request.form.get('password')):
             # As you can see remember me is always enabled, this was a
-            # design decision I made because more often than not users 
-            # want this enabled. 
+            # design decision I made because more often than not users
+            # want this enabled.
             # This allows for a less complicated login form.
             #
             # If you want them to be able to select whether or not they
             # should remain logged in then perform the following 3 steps:
-            # 1) Replace 'True' below with: 
+            # 1) Replace 'True' below with:
             #    request.form.get('remember', False)
             # 2) Uncomment the 'remember' field in user/forms.py#LoginForm
             # 3) Add checkbox to the login form with id/name 'remember'
-            if u.deleted == True and u.active == False:
+            if u.deleted is True and u.active is False:
                 flash('This account has been deleted.', 'warning')
 
             elif login_user(u, remember=True) and u.is_active():
@@ -198,3 +198,15 @@ def delete():
             return redirect(url_for('user.login'))
 
     return render_template('user/login.html', form=form)
+
+
+@user.route('/user/<username>')
+@login_required
+def user_profile(username):
+    user = User.query.filter_by(username=username).first_or_404()
+
+    if user.role == 'admin' and current_user.role == 'member':
+        flash('You do not have permission to view that.', 'warning')
+        return redirect(url_for('core.home'))
+
+    return render_template('user/user_profile.html', user=user)

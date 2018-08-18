@@ -124,8 +124,8 @@ def users(db):
         },
         {
             'role': 'member',
-            'email':'foof@bar.com',
-            'password':'password'
+            'email': 'foof@bar.com',
+            'password': 'password'
         }
     ]
 

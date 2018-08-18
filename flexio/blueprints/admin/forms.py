@@ -31,8 +31,8 @@ class UserForm(ModelForm):
             User.username,
             get_session=lambda: db.session
         ),
-        Optional(),
-        Length(1, 16),
+        DataRequired(),
+        Length(1, 32),
         Regexp('^\w+$', message=username_message)
     ])
 

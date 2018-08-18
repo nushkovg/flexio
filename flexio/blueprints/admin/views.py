@@ -74,9 +74,6 @@ def users_edit(id):
 
         form.populate_obj(user)
 
-        if not user.username:
-            user.username = None
-
         user.save()
 
         flash('User has been saved successfully.', 'success')

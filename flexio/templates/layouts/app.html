@@ -29,24 +29,21 @@
                             <a class="nav-link scroll-link" href="{{ url_for('admin.dashboard') }}">
                             <i class="fa fa-shield"></i> Admin: Dashboard</a></li>
                         <li>
-                        <li>
                             <a class="nav-link scroll-link" href="{{ url_for('admin.users') }}">
                             <i class="fa fa-shield"></i> Admin: Users</a></li>
-                        <li>
                         {% endif %}
                         {% if current_user.username != None %}
                         <li>
-                            <a class="nav-link scroll-link" href="#">
+                            <a class="nav-link scroll-link" href="{{ url_for('user.user_profile', username=current_user.username) }}">
                             <i class="fa fa-wpforms"></i> {{ current_user.username }}</a></li>
-                        <li>
                         {% endif %}
+                        <li>
                             <a class="nav-link scroll-link" href="{{ url_for('user.settings') }}">
                                 <i class="fa fa-cog"></i> Settings</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a class="nav-link scroll-link" href="{{ url_for('user.logout') }}">
                                 <i class="fa fa-sign-out"></i> Log out</a></li>
                     </ul>
-                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link scroll-link" href="{{ url_for('user.login') }}">

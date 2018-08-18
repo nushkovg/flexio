@@ -91,6 +91,20 @@
           </dd>
           <dt>Previous sign in IP address</dt>
           <dd>{{ user.last_sign_in_ip }}</dd>
+          <dt>Account deletion date</dt>
+          <dd class="sm-margin-bottom">
+            {% if user.deleted_on %}
+                {% if user.deleted == True %}
+                <time class="from-now"
+                      data-datetime="{{ user.deleted_on }}">
+                  {{ user.deleted_on }}
+                </time>
+                {% endif %}
+            {% endif %}
+          <dt>Account deleted from IP</dt>
+          {% if user.deleted == True %}
+            <dd>{{ user.deleted_from_ip }}</dd>
+          {% endif %}
         </dl>
       </div>
     </div>
