@@ -4,19 +4,13 @@
 
 
 {% block main %}
-<div class="container">
-  <div class="jumbotron">
+<div class="row aligner">
     <div align='center'>
-      <h4>{{ user.username.upper() }}</h4>
+      <img id="profile-avatar-256" src="{{ user.avatar(256) }}" alt="">
+      <h4 class="md-margin-top">Welcome to {{ user.username }}'s profile. Here you can see this user's blog units.</h4>
+      <p class="text-muted">If you see an empty page, make sure to remind this user to create the first unit!</p>
     </div>
-  </div>
 </div>
-
-{% if blog_units.items < 1 %}
-    <div class="aligner">
-      <p class="text-muted noselect">This user does not have anything published yet.</p>
-    </div>
-{% endif %}
 
 {% for unit in blog_units.items %}
 

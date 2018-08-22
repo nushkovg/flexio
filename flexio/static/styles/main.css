@@ -305,6 +305,10 @@ a:hover {
     color: rgba(0, 0, 0, 0.8);
 }
 
+#profile-avatar-256 {
+    border-radius: 5rem;
+}
+
 /* Margin and padding
 -------------------------------------------------- */
 

@@ -165,6 +165,17 @@ class User(UserMixin, ResourceMixin, db.Model):
 
         return False
 
+    def avatar(self, size):
+        """
+        Generates a user avatar using the Gravatar service according to email.
+
+        :param size: Size of the avatar in px
+        :return: img
+        """
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=robohash&s={}'.format(
+            digest, size)
+
     def is_active(self):
         """
         Return whether or not the user account is active, this satisfies

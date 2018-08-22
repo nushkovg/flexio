@@ -26,6 +26,7 @@ from flexio.blueprints.user.forms import (
     DeleteUserForm
 )
 
+
 user = Blueprint('user', __name__, template_folder='templates')
 
 
@@ -209,6 +210,8 @@ def user_profile(username):
         return redirect(url_for('core.home'))
 
     page = request.args.get('page', 1, type=int)
-    blog_units = Unit.query.filter_by(author=user).order_by(Unit.date.desc()).paginate(page=page, per_page=10)
+    author = Unit.query.filter_by(author=user).order_by(Unit.date.desc())
+    blog_units = author.paginate(page=page, per_page=10)
 
-    return render_template('user/user_profile.html', blog_units=blog_units, user=user)
+    return render_template('user/user_profile.html',
+                           blog_units=blog_units, user=user)

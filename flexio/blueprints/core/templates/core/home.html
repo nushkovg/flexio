@@ -8,12 +8,13 @@
 {% block main %}
 
     {% if current_user.is_authenticated %}
-        <div class="flexio-home-sm">
+        <div class="flexio-home-sm md-margin-top">
             <img id="flexio-home-logo-sm" src="{{ url_for('static', filename='images/flexio-home.png') }}" alt="Flexio Logo">
             <p class="noselect">Smart. Simple. Flexible.</p>
         </div>
+        <h6 class="aligner text-muted">Be the one who creates the latest unit on Flexio!</h6>
         {% for unit in blog_units.items %}
-                <div class="card" >
+                <div class="card md-margin-top" >
                     <div class="card-body">
                     <h4><a class="card-title links-text" href="{{ url_for('units.blog_unit', blog_unit_id=unit.id) }}">{{ unit.title }}</a></h4>
                     <a href="{{ url_for('user.user_profile', username=unit.author.username) }}">Author: {{ unit.author.username }}</a>

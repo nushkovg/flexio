@@ -29,7 +29,7 @@ def create_unit():
         blog_unit.create_unit()
         flash('Unit successfully created.', 'success')
         return redirect(url_for('core.home'))
-    
+
     return render_template('units/create_unit.html', form=form)
 
 

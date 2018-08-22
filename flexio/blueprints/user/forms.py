@@ -1,6 +1,17 @@
 from flask_wtf import Form
-from wtforms import HiddenField, StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Length, Optional, Regexp, Email
+from wtforms import (
+    HiddenField,
+    StringField,
+    PasswordField,
+    SubmitField
+)
+from wtforms.validators import (
+    DataRequired,
+    Length,
+    Optional,
+    Regexp,
+    Email
+)
 from wtforms_alchemy import Unique
 
 from lib.util_wtforms import ModelForm
