@@ -36,6 +36,8 @@ class User(UserMixin, ResourceMixin, db.Model):
     password = db.Column(db.String(128), nullable=False, server_default='')
     deleted = db.Column(db.Boolean(), nullable=False, server_default='0')
 
+    units = db.relationship('Unit', backref='author', lazy='dynamic')
+
     # Activity tracking.
     sign_in_count = db.Column(db.Integer, nullable=False, default=0)
     current_sign_in_on = db.Column(AwareDateTime())
@@ -240,3 +242,28 @@ class User(UserMixin, ResourceMixin, db.Model):
         self.current_sign_in_ip = ip_address
 
         return self.save()
+
+
+class Unit(ResourceMixin, db.Model):
+
+    __tablename__ = 'units'
+
+    users = db.relationship(User)
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    date = db.Column(db.DateTime, nullable=False,
+                     default=datetime.datetime.now(pytz.utc))
+    title = db.Column(db.String(140), nullable=False)
+    text = db.Column(db.Text, nullable=False)
+
+    def __init__(self, title, text, user_id):
+        self.title = title
+        self.text = text
+        self.user_id = user_id
+
+    def __repr__(self):
+        return "Unit ID: {} -- Date: {} -- Title: {}".format(self.id,
+                                                             self.date,
+                                                             self.title)

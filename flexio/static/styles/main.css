@@ -216,6 +216,14 @@ footer {
     animation-duration: 5s;
 }
 
+.flexio-home-sm {
+    color: #af8b3c;
+    text-align: center;
+    font-size: 2.5vmin;
+    animation-name: opacity-soft;
+    animation-duration: 3s;
+}
+
 .flex-center {
     height: 60vh;
     display: flex;
@@ -227,6 +235,13 @@ footer {
     display: block;
     width: 40%;
     height: 40%;
+    margin: 0 auto;
+}
+
+#flexio-home-logo-sm {
+    display: block;
+    width: 30%;
+    height: 30%;
     margin: 0 auto;
 }
 
@@ -247,6 +262,15 @@ footer {
 
 i {
     vertical-align: inherit;
+}
+
+a {
+    color: #252525;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
 }
 
 .fa-fire, .fa-shield {
@@ -450,4 +474,18 @@ input[type="color"]:focus,
 
 th:nth-child(3) a {
     padding-left: 1.5vmin;
+}
+
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: .15rem;
+}
+
+.page-link {
+    color: #af8b3c;
+    border: none;
+}
+
+.page-link:hover {
+    color: #000;
 }

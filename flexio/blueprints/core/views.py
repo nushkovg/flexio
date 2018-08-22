@@ -1,4 +1,7 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+from flask_login import current_user
+
+from flexio.blueprints.user.models import User, Unit
 
 
 core = Blueprint('core', __name__, template_folder='templates')
@@ -6,7 +9,9 @@ core = Blueprint('core', __name__, template_folder='templates')
 
 @core.route('/')
 def home():
-    return render_template('core/home.html')
+    page = request.args.get('page', 1, type=int)
+    blog_units = Unit.query.order_by(Unit.date.desc()).paginate(page=page, per_page=10)
+    return render_template('core/home.html', blog_units=blog_units)
 
 
 @core.route('/privacy')

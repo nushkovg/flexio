@@ -131,8 +131,25 @@ class ResourceMixin(object):
         current_user.active = False
         return db.session.commit()
 
+    def create_unit(self):
+        """
+        Create a new blog unit.
 
-    def __str__(self):
+        :return: Unit Model Instance
+        """
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    def update_unit(self):
+        """
+        Update a blog unit.
+
+        :return: db.session.commit()'s result
+        """
+        return db.session.commit()
+
+    def __repr__(self):
         """
         Create a human readable version of a class instance.
 

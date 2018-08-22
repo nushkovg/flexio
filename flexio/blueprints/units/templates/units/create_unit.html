@@ -1,0 +1,27 @@
+{% extends 'layouts/app.html' %}
+{% import 'macros/form.html' as f with context %}
+
+{% block title %}Create New Unit{% endblock %}
+
+{% block main %}
+
+    <div class="row aligner">
+    <div class="col-md-8 col-md-offset-2 well aligner-item">
+      {% call f.form_tag('units.create_unit') %}
+        <legend>Create a new blog unit</legend>
+
+        {% call f.form_group(form.title, css_class='margin-bottom',
+                             placeholder='Title of the new unit') %}
+        {% endcall %}
+
+        {% call f.form_group(form.text, css_class='margin-bottom',
+                             placeholder='Tell your story here.',
+                             rows='12') %}
+        {% endcall %}
+
+        <button type="submit" class="btn btn-primary">Publish</button>
+      {% endcall %}
+    </div>
+  </div>
+
+{% endblock %}

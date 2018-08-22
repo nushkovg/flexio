@@ -7,6 +7,7 @@ from flexio.blueprints.core import core
 from flexio.blueprints.contact import contact
 from flexio.blueprints.error_handlers import error_handlers
 from flexio.blueprints.user import user
+from flexio.blueprints.units import units
 from flexio.blueprints.user.models import User
 from flexio.extensions import (
     debug_toolbar,
@@ -67,6 +68,7 @@ def create_app(settings_override=None):
     app.register_blueprint(error_handlers)
     app.register_blueprint(contact)
     app.register_blueprint(user)
+    app.register_blueprint(units)
     extensions(app)
     authentication(app, User)
 

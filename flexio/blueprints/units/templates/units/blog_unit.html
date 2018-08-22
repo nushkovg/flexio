@@ -1,0 +1,46 @@
+{% extends 'layouts/app.html' %}
+{% import 'macros/form.html' as f with context %}
+
+{% block title %}{{ unit.title }}{% endblock %}
+
+{% block main %}
+
+  <div class="row aligner">
+    <div class="col-md-8 col-md-offset-2 well aligner-item">
+      <h2 class="primary-color">{{ unit.title }}</h2>
+      <h5><a href="{{ url_for('user.user_profile', username=unit.author.username) }}">{{ unit.author.username }}</a></h5>
+      <h6 class="text-muted">Published on: {{ unit.date.strftime('%Y-%m-%d %H:%M') }}</h6>
+      <p class="sm-margin-top">{{ unit.text }}</p>
+      {% if unit.author == current_user %}
+        <div>
+            <a class="btn btn-primary" href="{{ url_for('units.update_unit', blog_unit_id=unit.id) }}">Update</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        </div>
+   {% endif %}
+    </div>
+  </div>
+
+  <!-- Modal for deletion -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Delete Unit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you absolutely sure you want to do this? The action is irreversible!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            {% call f.form_tag('units.delete_unit', blog_unit_id=unit.id) %}
+              <button type="submit" class="btn btn-danger">Delete</button>
+            {% endcall %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

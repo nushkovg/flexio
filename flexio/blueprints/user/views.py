@@ -15,7 +15,7 @@ from flask_login import (
 
 from lib.safe_next_url import safe_next_url
 from flexio.blueprints.user.decorators import anonymous_required
-from flexio.blueprints.user.models import User
+from flexio.blueprints.user.models import User, Unit
 from flexio.blueprints.user.forms import (
     LoginForm,
     BeginPasswordResetForm,
@@ -204,9 +204,11 @@ def delete():
 @login_required
 def user_profile(username):
     user = User.query.filter_by(username=username).first_or_404()
-
     if user.role == 'admin' and current_user.role == 'member':
-        flash('You do not have permission to view that.', 'warning')
+        flash('You do not have permission to view admin accounts.', 'warning')
         return redirect(url_for('core.home'))
 
-    return render_template('user/user_profile.html', user=user)
+    page = request.args.get('page', 1, type=int)
+    blog_units = Unit.query.filter_by(author=user).order_by(Unit.date.desc()).paginate(page=page, per_page=10)
+
+    return render_template('user/user_profile.html', blog_units=blog_units, user=user)

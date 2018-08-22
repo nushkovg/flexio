@@ -12,6 +12,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto nav-item">
                     {% if current_user.is_authenticated %}
+                    <li class="nav-link scroll-link">
+                        <a href="{{ url_for('units.create_unit') }}">
+                        <i class="fa fa-pencil-square"></i> Create Unit</a></li>
                     <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link scroll-link"
                         data-toggle="dropdown"
