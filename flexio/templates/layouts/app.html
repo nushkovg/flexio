@@ -80,7 +80,14 @@
         <p class="footer-links">
             <a href="{{ url_for('core.home') }}">Home</a>
             ·
-            <a href="#">Donate</a>
+            <form action="/donate" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="{{ config['STRIPE_PUBLISHABLE_KEY'] }}"
+                        data-description="Flexio Donations"
+                        data-amount="500"
+                        data-locale="auto"></script>
+            </form>
             ·
             <a href="{{ url_for('core.about') }}">About</a>
             ·

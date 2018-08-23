@@ -1,5 +1,7 @@
 import logging
 
+import stripe
+
 from logging.handlers import SMTPHandler
 
 from werkzeug.contrib.fixers import ProxyFix
@@ -13,6 +15,7 @@ from flexio.blueprints.contact import contact
 from flexio.blueprints.error_handlers import error_handlers
 from flexio.blueprints.user import user
 from flexio.blueprints.units import units
+from flexio.blueprints.donate import donate
 from flexio.blueprints.user.models import User
 from flexio.extensions import (
     debug_toolbar,
@@ -68,6 +71,8 @@ def create_app(settings_override=None):
     if settings_override:
         app.config.update(settings_override)
 
+    stripe.api_key = app.config.get('STRIPE_SECRET_KEY')
+
     app.logger.setLevel(app.config['LOG_LEVEL'])
 
     middleware(app)
@@ -78,6 +83,7 @@ def create_app(settings_override=None):
     app.register_blueprint(contact)
     app.register_blueprint(user)
     app.register_blueprint(units)
+    app.register_blueprint(donate)
     extensions(app)
     authentication(app, User)
 

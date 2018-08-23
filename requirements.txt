@@ -30,3 +30,6 @@ WTForms-Alchemy==0.16.7
 
 # Utilities
 fake-factory==0.5.7
+
+# Donations
+stripe==2.5.0
