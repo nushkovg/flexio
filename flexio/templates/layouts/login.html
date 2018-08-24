@@ -24,19 +24,30 @@
   </div>
 
   <div class="footer-left">
-    <p class="footer-links">
-      <a href="{{ url_for('core.home') }}">Home</a>
-      ·
-      <a href="#">Donate</a>
-      ·
-      <a href="{{ url_for('core.about') }}">About</a>
-      ·
-      <a href="{{ url_for('contact.index') }}">Contact</a>
-      ·
-      <a href="{{ url_for('core.privacy') }}">Privacy Policy</a>
-      ·
-      <a href="{{ url_for('core.terms') }}">Terms of Service</a>
-    </p>
-    <p class="text-muted noselect">Flexio &copy; 2018</p>
-  </div>
+        <form action="/donate" method="POST">
+            <p class="footer-links">
+                <a href="{{ url_for('core.home') }}">Home</a>
+                ·
+                <a href="{{ url_for('core.about') }}">About</a>
+                ·
+                <a href="{{ url_for('contact.index') }}">Contact</a>
+                ·
+                <a href="{{ url_for('core.privacy') }}">Privacy Policy</a>
+                ·
+                <a href="{{ url_for('core.terms') }}">Terms of Service</a> 
+                ·
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="{{ config['STRIPE_PUBLISHABLE_KEY'] }}"
+                        data-description="Donation System"
+                        data-amount="500"
+                        data-locale="auto"
+                        data-label="Donate"
+                        data-panel-label="Donate"
+                        data-image="{{ url_for('static', filename='images/flexio-sm.png') }}"
+                        data-name="Flexio"></script>
+            </p>
+        </form>
+        <p class="text-muted noselect">Flexio &copy; 2018</p>
+    </div>
 {% endblock %}
