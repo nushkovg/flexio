@@ -493,3 +493,123 @@ th:nth-child(3) a {
 .page-link:hover {
     color: #000;
 }
+
+div.footer-left {
+    display: inline-block;
+}
+
+div.footer-left form {
+    display: inline-block;
+}
+
+/* Stripe Button Override */
+
+.stripe-button-el{
+    outline: none;
+    overflow:hidden;
+    display:inline-block;
+    visibility:visible !important;
+    background-image:none !important;
+    -webkit-font-smoothing:antialiased;
+    border:0 !important;
+    padding:0 !important;
+    text-transform: none  !important;
+    text-decoration:none;
+    letter-spacing: normal;
+    -webkit-border-radius:0 !important;
+    -moz-border-radius:0 !important;
+    -ms-border-radius:0 !important;
+    -o-border-radius:0 !important;
+    border-radius:0 !important;
+    -webkit-box-shadow:none !important;
+    -moz-box-shadow:none !important;
+    -ms-box-shadow:none !important;
+    -o-box-shadow:none !important;
+    box-shadow:none !important;
+    -webkit-appearance: none;
+    -webkit-touch-callout:none;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+    cursor:pointer
+}
+.stripe-button-el::-moz-focus-inner{
+    border:0;
+    padding:0
+}
+.stripe-button-el span{
+    outline: none;
+    display:block;
+    position:relative;
+    padding:0 !important;
+    height:30px !important;
+    line-height:30px !important;
+    background:#fff !important;
+    background-image:none !important;
+
+    font-size:inherit !important;
+    color:rgba(0, 0, 0, 0.8) !important;
+    font-weight: 500 !important;
+    font-family: Oswald  !important;
+    text-shadow:none !important;;
+    -webkit-box-shadow:none !important;
+    -moz-box-shadow:none !important;
+    -ms-box-shadow:none !important;
+    -o-box-shadow:none !important;
+    box-shadow:none !important;
+    -webkit-border-radius:0 !important;
+    -moz-border-radius:0 !important;
+    -ms-border-radius:0 !important;
+    -o-border-radius:0 !important;
+    border-radius:0 !important;
+}
+.stripe-button-el:not(:disabled):active,.stripe-button-el.active{
+    background:#fff !important;
+}
+.stripe-button-el:not(:disabled):active span,.stripe-button-el.active span{
+    outline: none !important;
+    color:#000;
+    background:#fff;
+    background-image:none  !important;
+    -webkit-box-shadow:none !important;
+    -moz-box-shadow:none !important;
+    -ms-box-shadow:none !important;
+    -o-box-shadow:none !important;
+    box-shadow:none !important;
+}
+.stripe-button-el:disabled,.stripe-button-el.disabled{
+    background:#fff  !important;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    -ms-box-shadow:none;
+    -o-box-shadow:none;
+    box-shadow:none
+}
+.stripe-button-el:disabled span,.stripe-button-el.disabled span{
+    color:rgb(122, 122, 122)  !important;
+    background:#fff  !important;
+    text-shadow:none !important;
+}
+
+.stripe-button-el span {
+ color: rgba(0, 0, 0, 0.8);
+}
+
+.stripe-button-el:not(:disabled):hover span {
+ color: #000 !important;
+}
+
+.stripe-button-el:not(:disabled):active span,.stripe-button-el.active span {
+ background: #fff !important;
+}
+
+.stripe-button-el:disabled span,.stripe-button-el.disabled span{
+ background: #fff !important;
+}
+
+.stripe-button-el:focus {
+    outline: none !important;
+}
